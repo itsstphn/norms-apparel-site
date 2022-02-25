@@ -1,0 +1,30 @@
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item a {
+  text-decoration: none;
+}
+
+.cart-item a img {
+  width: 70px;
+  height: 70px;
+}
+
+.cart-item .btn-add,
+.cart-item .btn-minus {
+  width: 20px;
+  height: 20px;
+}
+
+.cart-item .quantity {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item .quantity div {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,16 @@
+.signin form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signin button {
+  width: fit-content;
+}
+
+.signin > p {
+  margin-top: 2rem;
+}
+
+.signin .btn-redirect-signup {
+  margin-top: 0.5rem;
+}

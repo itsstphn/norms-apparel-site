@@ -1,0 +1,42 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+
+  left: 0;
+  transform: translateX(-100%);
+  background-color: #403952;
+  display: flex;
+  flex-direction: column;
+  justify-items: end;
+  width: 70vw;
+  padding: 2rem;
+  transition: all 0.5s ease;
+}
+
+.sidebar.active {
+  transform: translateX(0);
+}
+
+.sidebar a {
+  display: inline-block;
+  color: #fff;
+  margin: 1rem;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.sidebar button {
+  width: fit-content;
+  background: transparent;
+  border: none;
+  margin-left: auto;
+}
+
+.sidebar i {
+  color: #fff;
+  font-size: 30px;
+}
+
+.sidebar .profile p {
+  color: #fff;
+}

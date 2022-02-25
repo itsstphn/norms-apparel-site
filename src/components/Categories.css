@@ -1,0 +1,18 @@
+.categories ul {
+  margin-top: 1rem;
+  list-style-type: none;
+  display: flex;
+  width: fit-content;
+}
+
+.categories ul li {
+  padding: 0.3rem;
+  min-width: 50px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #ffe4c4;
+}
+
+.categories ul li.active {
+  background-color: #ffe4c4;
+}

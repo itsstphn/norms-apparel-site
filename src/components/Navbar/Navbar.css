@@ -1,0 +1,42 @@
+.navbar {
+  padding: 1rem;
+  height: 70px;
+  position: sticky;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  top: 0;
+  background-color: white;
+  width: 100vw;
+}
+
+.navbar .menu-btn {
+  background-color: #403952;
+  color: white;
+  width: fit-content;
+  height: 30px;
+  border: none;
+}
+
+.navbar .menu-btn i {
+  width: 30px;
+  margin: auto;
+}
+
+.navbar form {
+  margin-right: 1rem;
+}
+
+.navbar form input[type="search"] {
+  width: 100px;
+}
+
+.navbar .logo {
+  margin-right: auto;
+  cursor: pointer;
+}
+
+.navbar .logo img {
+  width: 50px;
+  height: 50px;
+}

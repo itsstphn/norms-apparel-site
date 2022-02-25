@@ -1,0 +1,14 @@
+.item-list {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.item-list a {
+  text-decoration: none;
+}
+
+.item-list p {
+  color: #1b1b1b;
+}
