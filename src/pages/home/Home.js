@@ -1,5 +1,5 @@
 import { doc, setDoc, updateDoc } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Categories from "../../components/Categories";
 import { db } from "../../firebase/config";
@@ -9,15 +9,27 @@ import ItemsList from "./../../components/ItemsList";
 import "./Home.css";
 
 const Home = () => {
-  const items = useSelector((state) => state.products.products);
-  console.log(items);
+  const dbItems = useSelector((state) => state.products.products);
+
   const cartItems = useSelector((state) => state.cartItems.items);
 
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [items, setItems] = useState([]);
 
   const handleSelectCategory = (cat) => {
     setSelectedCategory(cat);
   };
+
+  useEffect(() => {
+    if (selectedCategory === "all") {
+      setItems(dbItems);
+    } else {
+      const items = dbItems.filter(
+        (item) => item.productCategory === selectedCategory
+      );
+      setItems(items);
+    }
+  }, [dbItems, selectedCategory]);
 
   const handleAddToCart = async (item) => {
     const docRef = doc(db, "cartItems", item.id);
