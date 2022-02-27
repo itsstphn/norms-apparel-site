@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import "./CartItem.css";
 
-const CartItem = ({ item, handleRemoveFromCart, handleAddQuantity }) => {
+const CartItem = ({
+  item,
+  handleRemoveFromCart,
+  handleReduceQuantity,
+  handleAddQuantity,
+}) => {
   return (
     <div className="cart-item">
       <Link to={`/product/${item.id}`}>
@@ -13,7 +18,12 @@ const CartItem = ({ item, handleRemoveFromCart, handleAddQuantity }) => {
       <p>Php {item.totalPrice}</p>
       <div className="quantity">
         <div>
-          <button className="btn-minus">-</button>
+          <button
+            onClick={() => handleReduceQuantity(item)}
+            className="btn-minus"
+          >
+            -
+          </button>
           <p>{item.quantity}</p>
           <button onClick={() => handleAddQuantity(item)} className="btn-add">
             +

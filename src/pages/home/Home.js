@@ -38,9 +38,9 @@ const Home = () => {
       await setDoc(docRef, {
         id: item.id,
         productName: item.productName,
-        productPrice: item.productPrice,
+        productPrice: +item.productPrice,
         quantity: 1,
-        totalPrice: item.productPrice,
+        totalPrice: +item.productPrice,
         thumbnailURL: item.thumbnailURL,
       });
     } else {

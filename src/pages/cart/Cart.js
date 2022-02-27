@@ -13,11 +13,25 @@ const Cart = () => {
   };
 
   const handleAddQuantity = async (item) => {
-    const existingItem = items.find((item) => existingItem.id === item.id);
+    const existingItem = items.find((cartItem) => item.id === cartItem.id);
     const docRef = doc(db, "cartItems", item.id);
     await updateDoc(docRef, {
       quantity: existingItem.quantity + 1,
+      totalPrice: existingItem.totalPrice + existingItem.productPrice,
     });
+  };
+
+  const handleReduceQuantity = async (item) => {
+    const existingItem = items.find((cartItem) => item.id === cartItem.id);
+    const docRef = doc(db, "cartItems", item.id);
+    if (existingItem.quantity > 1) {
+      await updateDoc(docRef, {
+        quantity: existingItem.quantity - 1,
+        totalPrice: existingItem.totalPrice - existingItem.productPrice,
+      });
+    } else {
+      handleRemoveFromCart(item);
+    }
   };
   return (
     <div>
@@ -25,6 +39,7 @@ const Cart = () => {
       <CartItemsList
         items={items}
         handleAddQuantity={handleAddQuantity}
+        handleReduceQuantity={handleReduceQuantity}
         handleRemoveFromCart={handleRemoveFromCart}
       ></CartItemsList>
     </div>
