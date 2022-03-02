@@ -3,9 +3,14 @@ import { useSelector } from "react-redux";
 import { db } from "../../firebase/config";
 
 import CartItemsList from "./CartItemsList";
+import CartTotal from "./CartTotal";
 
 const Cart = () => {
   const items = useSelector((state) => state.cartItems.items);
+  const totalQuantity = useSelector((state) => state.cartItems.totalQuantity);
+  console.log(totalQuantity);
+  const totalPrice = useSelector((state) => state.cartItems.totalPrice);
+  console.log(totalPrice);
 
   const handleRemoveFromCart = async (item) => {
     const docRef = doc(db, "cartItems", item.id);
@@ -42,6 +47,10 @@ const Cart = () => {
         handleReduceQuantity={handleReduceQuantity}
         handleRemoveFromCart={handleRemoveFromCart}
       ></CartItemsList>
+      <CartTotal
+        totalQuantity={totalQuantity}
+        totalPrice={totalPrice}
+      ></CartTotal>
     </div>
   );
 };
