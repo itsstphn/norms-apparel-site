@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  HashRouter,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import "./App.css";
 import { Navbar } from "./components/Navbar/Navbar";
 
@@ -31,7 +37,7 @@ function App() {
   return (
     <div className="App">
       {authIsReady ? (
-        <BrowserRouter>
+        <HashRouter>
           <Navbar></Navbar>
           <div className="container">
             <Routes>
@@ -56,7 +62,7 @@ function App() {
               ></Route>
             </Routes>
           </div>
-        </BrowserRouter>
+        </HashRouter>
       ) : (
         <p>Loading...</p>
       )}
