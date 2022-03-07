@@ -22,7 +22,7 @@ import { fetchCart } from "./store/cartSlice";
 import { fetchProducts } from "./store/productsSlice";
 
 function App() {
-  const { user, authIsReady } = useAuthContext();
+  const { user, authIsReady, isAdmin } = useAuthContext();
 
   const dispatch = useDispatch();
 
@@ -58,7 +58,13 @@ function App() {
               <Route path="/cart" element={<Cart></Cart>}></Route>
               <Route
                 path="/create-listing"
-                element={<CreateListing></CreateListing>}
+                element={
+                  user && isAdmin ? (
+                    <CreateListing></CreateListing>
+                  ) : (
+                    <Navigate to="/"></Navigate>
+                  )
+                }
               ></Route>
             </Routes>
           </div>

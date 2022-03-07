@@ -1,6 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { auth } from "../firebase/config";
+import { auth, db } from "../firebase/config";
 import { useAuthContext } from "./useAuthContext";
 
 export const useSignin = () => {
@@ -16,6 +17,15 @@ export const useSignin = () => {
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
       dispatch({ type: "SIGNIN", payload: response.user });
+
+      if (response.user) {
+        const docRef = doc(db, "users", response.user.uid);
+        const responseDoc = await getDoc(docRef);
+        if (responseDoc.data().isAdmin) {
+          console.log("updated to admin after sign in");
+          dispatch({ type: "USER_IS_ADMIN" });
+        }
+      }
 
       !isCancelled && setIsPending(false);
     } catch (error) {

@@ -3,6 +3,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useState } from "react";
 import { db, storage } from "../../firebase/config";
 import { useDataContext } from "./../../hooks/useDataContext";
+import "./CreateListing.css";
 
 const CreateListing = () => {
   const [newProductName, setNewProductName] = useState("");
@@ -43,51 +44,53 @@ const CreateListing = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        <span>Product Name: </span>
-        <input
-          value={newProductName}
-          onChange={(e) => setNewProductName(e.target.value)}
-          type="text"
-        />
-      </label>
-      <label>
-        <span>Price:</span>
-        <input
-          value={newProductPrice}
-          onChange={(e) => setNewProductPrice(e.target.value)}
-          type="number"
-        />
-      </label>
-      <label>
-        <span>Upload Image:</span>
-        <input
-          onChange={(e) => {
-            setNewProductThumbnail(e.target.files[0]);
-          }}
-          type="file"
-          accept="image/*"
-        />
-      </label>
-      <label>
-        <span>Category</span>
+    <div className="create-listing">
+      <form onSubmit={handleSubmit}>
+        <label>
+          <span>Product Name: </span>
+          <input
+            value={newProductName}
+            onChange={(e) => setNewProductName(e.target.value)}
+            type="text"
+          />
+        </label>
+        <label>
+          <span>Price:</span>
+          <input
+            value={newProductPrice}
+            onChange={(e) => setNewProductPrice(e.target.value)}
+            type="number"
+          />
+        </label>
+        <label>
+          <span>Upload Image:</span>
+          <input
+            onChange={(e) => {
+              setNewProductThumbnail(e.target.files[0]);
+            }}
+            type="file"
+            accept="image/*"
+          />
+        </label>
+        <label>
+          <span>Category</span>
 
-        <select
-          value={newProductCategory}
-          onChange={(e) => setNewProductCategory(e.target.value)}
-        >
-          {selectCategories.map((cat) => {
-            return (
-              <option key={cat} value={cat}>
-                {cat}
-              </option>
-            );
-          })}
-        </select>
-      </label>
-      <button>Submit</button>
-    </form>
+          <select
+            value={newProductCategory}
+            onChange={(e) => setNewProductCategory(e.target.value)}
+          >
+            {selectCategories.map((cat) => {
+              return (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              );
+            })}
+          </select>
+        </label>
+        <button>Submit</button>
+      </form>
+    </div>
   );
 };
 

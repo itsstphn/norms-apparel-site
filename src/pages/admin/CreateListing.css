@@ -1,0 +1,10 @@
+.create-listing form {
+  display: flex;
+  flex-direction: column;
+  height: 130%;
+  justify-content: 30px;
+}
+
+.create-listing form button {
+  width: fit-content;
+}
